@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
-import { Button, Card, Form, Input, Modal, Select, Typography } from "antd";
+import { Button, Card, DatePicker, Form, Input, Modal, Select, Typography } from "antd";
 
 const { Title, Text } = Typography;
 
@@ -127,6 +127,19 @@ export default function ProfilePage() {
               rules={[{ required: true, message: "Lütfen soyadını gir." }]}
             >
               <Input placeholder="Soyadı girin" size="large" />
+            </Form.Item>
+            <Form.Item
+              label="Doğum Tarihi"
+              name="birthDate"
+              className="md:col-span-2"
+              rules={[{ required: true, message: "Lütfen doğum tarihini seç." }]}
+            >
+              <DatePicker
+                format="DD.MM.YYYY"
+                placeholder="Gün/Ay/Yıl"
+                size="large"
+                className="w-full"
+              />
             </Form.Item>
             <Form.Item
               label="Platform Dili"

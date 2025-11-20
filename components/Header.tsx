@@ -24,7 +24,11 @@ const pricingItems = [
   { title: "Ödeme Güvencesi", description: "Lorem ipsum dolor sit amet consectetur." },
 ];
 
-const simpleNavItems = [{ label: "Süreç Takibi" }, { label: "Hakkımızda" }];
+const simpleNavItems: Array<{ label: string; href?: string }> = [
+  { label: "Süreç Takibi" },
+  { label: "Hakkımızda" },
+  { label: "Beyan", href: "/beyan" },
+];
 
 const ArrowIcon = () => (
   <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
@@ -84,16 +88,16 @@ export function Header() {
 
   return (
     <header className="border-b border-zinc-200 bg-white">
-      <div className="flex w-full items-center justify-between gap-6 px-10 py-4">
-        <div className="flex items-center gap-8">
+      <div className="flex w-full items-center justify-between gap-4 px-4 py-3 sm:gap-6 sm:px-6 sm:py-4 lg:px-10">
+        <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
           <Link
             href="/"
             onClick={() => dispatchSelection("reset", "home")}
-            className="flex items-center gap-2 text-2xl font-semibold text-sky-700"
+            className="flex items-center gap-2 text-xl font-semibold text-sky-700 sm:text-2xl"
           >
-            <span className="rounded-full bg-sky-600 px-3 py-1 text-white">Marka</span>
+            <span className="rounded-full bg-sky-600 px-2 py-1 text-sm text-white sm:px-3">Marka</span>
           </Link>
-          <nav className="flex items-center gap-4 text-sm font-medium text-slate-600">
+          <nav className="hidden items-center gap-2 text-sm font-medium text-slate-600 lg:flex lg:gap-4">
             <div className="relative group">
               <button
                 type="button"
@@ -101,7 +105,7 @@ export function Header() {
                   buttonRefs.current.workflows = node;
                 }}
                 onClick={() => toggleMenu("workflows")}
-                className="flex items-center gap-1 rounded-full px-4 py-1.5 text-base font-semibold text-slate-700 transition hover:bg-slate-100"
+                className="flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 sm:px-4 sm:text-base"
               >
                 İş Akışları
                 <ArrowIcon />
@@ -110,13 +114,13 @@ export function Header() {
                 ref={(node) => {
                   dropdownRefs.current.workflows = node;
                 }}
-                className={`absolute left-0 top-[calc(100%+12px)] z-20 w-[560px] rounded-3xl border border-zinc-100 bg-white p-6 text-sm text-slate-600 shadow-2xl transition duration-200 ${
+                className={`absolute left-0 top-[calc(100%+12px)] z-20 w-[280px] rounded-3xl border border-zinc-100 bg-white p-4 text-sm text-slate-600 shadow-2xl transition duration-200 sm:w-[400px] sm:p-6 lg:w-[560px] ${
                   openMenu === "workflows"
                     ? "visible scale-100 opacity-100"
                     : "invisible scale-95 opacity-0 group-hover:visible group-hover:scale-100 group-hover:opacity-100"
                 }`}
               >
-                <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                <div className="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-4">
                   {workflowItems.map((item) => (
                     <button
                       key={item.title}
@@ -138,7 +142,7 @@ export function Header() {
                   buttonRefs.current.pricing = node;
                 }}
                 onClick={() => toggleMenu("pricing")}
-                className="flex items-center gap-1 rounded-full px-4 py-1.5 text-base font-semibold text-slate-700 transition hover:bg-slate-100"
+                className="flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 sm:px-4 sm:text-base"
               >
                 Fiyatlandırma
                 <ArrowIcon />
@@ -147,7 +151,7 @@ export function Header() {
                 ref={(node) => {
                   dropdownRefs.current.pricing = node;
                 }}
-                className={`absolute left-0 top-[calc(100%+12px)] z-20 w-[360px] rounded-3xl border border-zinc-100 bg-white p-6 text-sm text-slate-600 shadow-2xl transition duration-200 ${
+                className={`absolute left-0 top-[calc(100%+12px)] z-20 w-[280px] rounded-3xl border border-zinc-100 bg-white p-4 text-sm text-slate-600 shadow-2xl transition duration-200 sm:w-[320px] sm:p-6 lg:w-[360px] ${
                   openMenu === "pricing"
                     ? "visible scale-100 opacity-100"
                     : "invisible scale-95 opacity-0 group-hover:visible group-hover:scale-100 group-hover:opacity-100"
@@ -168,37 +172,50 @@ export function Header() {
                 </div>
               </div>
             </div>
-            {simpleNavItems.map((item) => (
-              <button
-                type="button"
-                key={item.label}
-                onClick={() => dispatchSelection("nav", item.label)}
-                className="flex items-center gap-1 rounded-full px-4 py-1.5 text-base text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
-              >
-                {item.label}
-                <ArrowIcon />
-              </button>
-            ))}
+            {simpleNavItems.map((item) => {
+              if (item.href) {
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="flex items-center gap-1 rounded-full px-3 py-1.5 text-sm text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:px-4 sm:text-base"
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+              return (
+                <button
+                  type="button"
+                  key={item.label}
+                  onClick={() => dispatchSelection("nav", item.label)}
+                  className="flex items-center gap-1 rounded-full px-4 py-1.5 text-base text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+                >
+                  {item.label}
+                  <ArrowIcon />
+                </button>
+              );
+            })}
             <a
               href="http://localhost:3001/profile"
-              className="rounded-full border border-sky-100 bg-sky-50 px-4 py-1.5 text-base font-semibold text-sky-700 transition hover:border-sky-200 hover:bg-sky-100"
+              className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1.5 text-sm font-semibold text-sky-700 transition hover:border-sky-200 hover:bg-sky-100 sm:px-4 sm:text-base"
             >
               Profil
             </a>
           </nav>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-200 text-slate-500 transition hover:border-slate-300 hover:text-slate-700"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 text-slate-500 transition hover:border-slate-300 hover:text-slate-700 sm:h-11 sm:w-11"
           >
             <BellIcon />
           </button>
-          <div className="flex items-center gap-3 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-500">
+          <div className="hidden items-center gap-2 rounded-full border border-zinc-200 bg-white px-2 py-1.5 shadow-sm sm:flex sm:gap-3 sm:px-4 sm:py-2">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 sm:h-11 sm:w-11">
               <UserIcon />
             </div>
-            <div className="text-left">
+            <div className="hidden text-left lg:block">
               <p className="text-sm font-semibold text-slate-800">İsim Soyisim</p>
               <p className="text-xs text-slate-500">Rudiq Limited A.Ş.</p>
             </div>

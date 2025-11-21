@@ -29,6 +29,7 @@ const simpleNavItems: Array<{ label: string; href?: string }> = [
   { label: "Hakkımızda" },
   { label: "Beyan", href: "/beyan" },
   { label: "Product", href: "/product" },
+  { label: "Product 2", href: "/product2" },
 ];
 
 const ArrowIcon = () => (

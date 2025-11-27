@@ -1,0 +1,68 @@
+{
+  "banner": {
+    "title": "Profile Settings",
+    "subtitle": "Update account details and stay secure."
+  },
+  "account": {
+    "title": "Account Settings",
+    "subtitle": "Manage the essentials of your account.",
+    "initial": {
+      "firstName": "Name",
+      "lastName": "Surname"
+    },
+    "fields": {
+      "email": "Email",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birthDate": "Birth Date",
+      "language": "Platform Language"
+    },
+    "placeholders": {
+      "firstName": "Enter first name",
+      "lastName": "Enter last name",
+      "birthDate": "Day/Month/Year",
+      "language": "Choose a language"
+    }
+  },
+  "password": {
+    "title": "Password Settings",
+    "subtitle": "Create a strong password to protect your data.",
+    "fields": {
+      "current": "Current Password",
+      "new": "New Password",
+      "confirm": "Repeat Password"
+    },
+    "placeholders": {
+      "current": "Current password",
+      "new": "Enter a password",
+      "confirm": "Re-enter password"
+    },
+    "rules": {
+      "minLength": "At least 8 characters",
+      "special": "At least 1 special character (%,&,.)",
+      "uppercase": "At least one uppercase letter"
+    }
+  },
+  "validation": {
+    "account": {
+      "firstName": "Enter your first name.",
+      "lastName": "Enter your last name.",
+      "birthDate": "Select your birth date.",
+      "language": "Choose a language."
+    },
+    "password": {
+      "currentRequired": "Enter your current password.",
+      "requiredNew": "Enter a new password.",
+      "sameAsCurrent": "New password cannot match the current password.",
+      "requirements": "Password does not meet the requirements.",
+      "requiredConfirm": "Repeat your new password.",
+      "mismatch": "Passwords do not match."
+    }
+  },
+  "modals": {
+    "accountSaved": "Your account information has been saved.",
+    "passwordSuccess": "Your password has been updated.",
+    "passwordError": "Check the password requirements and try again."
+  }
+}
+

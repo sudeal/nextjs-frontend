@@ -1,0 +1,11 @@
+{
+  "title": "Məhsul Detalları",
+  "labels": {
+    "title": "Başlıq",
+    "ratingCount": "Qiymət sayı"
+  },
+  "links": {
+    "backToList": "← Bütün məhsullar"
+  }
+}
+

@@ -1,0 +1,141 @@
+{
+  "header": {
+    "brand": "Brend",
+    "notifications": "Bildirişlər",
+    "workflow": {
+      "label": "İş Axınları",
+      "items": {
+        "application": {
+          "title": "Əməliyyat Müraciəti",
+          "description": "Yeni müraciətləri başladın və idarə edin."
+        },
+        "statement": {
+          "title": "Əməliyyat Bəyanı",
+          "description": "Bəyan məlumatlarını yeniləyin."
+        },
+        "tempExport": {
+          "title": "Müvəqqəti İxrac Formu",
+          "description": "İxrac sənədlərini idarə edin."
+        },
+        "loadingList": {
+          "title": "Yükləmə Siyahısı",
+          "description": "Göndəriş maddələrinə baxın."
+        },
+        "compliance": {
+          "title": "Məhsul Uyğunluğu",
+          "description": "Keyfiyyət və uyğunluğa nəzarət edin."
+        },
+        "payment": {
+          "title": "Ödəniş Bildirişi",
+          "description": "Ödəniş statuslarını izləyin."
+        },
+        "preNotice": {
+          "title": "Göndəriş Ön Bildirişi",
+          "description": "Göndəriş bildirişlərini idarə edin."
+        },
+        "transit": {
+          "title": "Tranzit Bəyanı",
+          "description": "Tranzit prosedurlarını izləyin."
+        },
+        "sbOperations": {
+          "title": "SB Operasiya Müraciəti",
+          "description": "Yeni əməliyyat tələblərini göndərin."
+        },
+        "insurance": {
+          "title": "Logistika Sığortası",
+          "description": "Sığorta qeydlərini yeniləyin."
+        },
+        "invoice": {
+          "title": "Əməliyyat Fakturası",
+          "description": "Faktura detalları ilə tanış olun."
+        }
+      }
+    },
+    "pricing": {
+      "label": "Qiymətlandırma",
+      "items": {
+        "transport": {
+          "title": "Daşıma Xidməti",
+          "description": "Daşıma xərclərini izləyin."
+        },
+        "risk": {
+          "title": "Risk İdarəçiliyi",
+          "description": "Risk ssenarilərini optimallaşdırın."
+        },
+        "stock": {
+          "title": "Anbar İdarəçiliyi",
+          "description": "Anbar səviyyələrinə nəzarət edin."
+        },
+        "payment": {
+          "title": "Ödəniş Zəmanəti",
+          "description": "Ödəniş təhlükəsizliyini artırın."
+        }
+      }
+    },
+    "nav": {
+      "track": "Proses İzləmə",
+      "about": "Haqqımızda",
+      "declaration": "Beyan",
+      "product": "Məhsul",
+      "product2": "Məhsul 2",
+      "profile": "Profil"
+    },
+    "language": {
+      "label": "Dil",
+      "options": {
+        "tr": "TR - Türk",
+        "en": "EN - İngilis",
+        "az": "AZ - Azərbaycan",
+        "ru": "RU - Rus"
+      }
+    },
+    "user": {
+      "name": "Ad Soyad",
+      "company": "Rudiq Limited MMC"
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} Bütün Hüquqlar Qorunur."
+  },
+  "actions": {
+    "edit": "Dəyiş",
+    "delete": "Sil",
+    "saveChanges": "Dəyişiklikləri Saxla",
+    "viewDetail": "Detallar",
+    "back": "← Geri qayıt",
+    "create": "Yarat",
+    "add": "Əlavə et",
+    "tryAgain": "Yenidən cəhd et",
+    "confirm": "Təsdiqlə",
+    "close": "Bağla"
+  },
+  "messages": {
+    "operationFailed": "Əməliyyat uğursuz oldu",
+    "unknownError": "Naməlum xəta baş verdi.",
+    "productsNotLoaded": "Məhsullar yüklənmədi.",
+    "selectFromMenu": "Menyudan seçim etdikdən sonra məzmun göstəriləcək.",
+    "invalidProductId": "Yanlış məhsul ID-si.",
+    "productNotFound": "Məhsul tapılmadı.",
+    "accountSaved": "Hesab məlumatlarınız saxlanıldı.",
+    "passwordUpdated": "Şifrəniz yeniləndi.",
+    "passwordRequirements": "Şifrə tələblərini yoxlayıb yenidən cəhd edin."
+  },
+  "status": {
+    "success": "Uğurlu",
+    "error": "Xəta",
+    "inProgress": "Davam edir",
+    "completed": "Tamamlandı",
+    "yes": "Bəli",
+    "no": "Xeyr"
+  },
+  "table": {
+    "id": "ID",
+    "actions": "Əməliyyatlar",
+    "product": "Məhsul",
+    "price": "Qiymət",
+    "score": "Bal",
+    "category": "Kateqoriya",
+    "description": "Təsvir"
+  }
+}
+

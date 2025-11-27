@@ -1,0 +1,69 @@
+{
+  "banner": {
+    "title": "Profil Ayarları",
+    "subtitle": "Hesap bilgilerini güncelle, güvenliğini koru."
+  },
+  "account": {
+    "title": "Hesap Ayarları",
+    "subtitle": "Hesabına ait temel bilgileri yönet.",
+    "initial": {
+      "firstName": "Ad",
+      "lastName": "Soyad"
+    },
+    "fields": {
+      "email": "Email",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "birthDate": "Doğum Tarihi",
+      "language": "Platform Dili"
+    },
+    "placeholders": {
+      "firstName": "Adı girin",
+      "lastName": "Soyadı girin",
+      "birthDate": "Gün/Ay/Yıl",
+      "language": "Dil seçin"
+    }
+  },
+  "password": {
+    "title": "Şifre Ayarları",
+    "subtitle": "Kişisel verilerini korumak için güçlü bir şifre oluştur.",
+    "fields": {
+      "current": "Mevcut Şifre",
+      "new": "Yeni Şifre",
+      "confirm": "Yeni Şifre Tekrar"
+    },
+    "placeholders": {
+      "current": "Mevcut şifre",
+      "new": "Şifre girin",
+      "confirm": "Şifre tekrar girin"
+    },
+    "rules": {
+      "minLength": "Minimum 8 karakter",
+      "special": "Minimum 1 özel karakter (%,&,.)",
+      "uppercase": "Minimum bir büyük harf"
+    }
+  },
+  "validation": {
+    "account": {
+      "firstName": "Lütfen adını gir.",
+      "lastName": "Lütfen soyadını gir.",
+      "birthDate": "Lütfen doğum tarihini seç.",
+      "language": "Bir dil seç."
+    },
+    "password": {
+      "currentRequired": "Mevcut şifreyi gir.",
+      "requiredNew": "Yeni şifreyi gir.",
+      "sameAsCurrent": "Mevcut şifre ile yeni şifre aynı olamaz.",
+      "requirements": "Şifre gereksinimlerini karşılamıyor.",
+      "requiredConfirm": "Yeni şifreyi tekrar gir.",
+      "mismatch": "Şifreler eşleşmiyor.",
+      "requiredConfirmShort": "Yeni şifreyi tekrar gir."
+    }
+  },
+  "modals": {
+    "accountSaved": "Hesap bilgileriniz başarıyla kaydedildi.",
+    "passwordSuccess": "Şifreniz başarıyla güncellendi.",
+    "passwordError": "Şifre gereksinimlerini kontrol edip tekrar deneyin."
+  }
+}
+

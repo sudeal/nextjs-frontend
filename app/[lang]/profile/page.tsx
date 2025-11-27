@@ -1,17 +1,13 @@
 ﻿'use client';
 
 import { useMemo, useState } from "react";
+import { useParams } from "next/navigation";
 import { CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
 import { Button, Card, DatePicker, Form, Input, Modal, Select, Typography } from "antd";
 
-const { Title, Text } = Typography;
+import i18nConfig from "@/i18n";
 
-const languageOptions = [
-  { label: "TR - Türkçe", value: "tr" },
-  { label: "EN - English", value: "en" },
-  { label: "AZ - азербайджанец", value: "az" },
-  { label: "RU - Русский", value: "ru" },
-];
+const { Title, Text } = Typography;
 
 const passwordRules = [
   { key: "minLength", label: "Minimum 8 karakter", isValid: (value: string) => value.length >= 8 },
@@ -32,6 +28,26 @@ export default function ProfilePage() {
   const [passwordForm] = Form.useForm();
   const [passwordValue, setPasswordValue] = useState("");
   const [passwordModal, setPasswordModal] = useState({ open: false, success: true });
+  const params = useParams<{ lang: string }>();
+  const locale = params?.lang ?? i18nConfig.defaultLocale;
+  const languageOptions = useMemo(
+    () =>
+      i18nConfig.locales.map((code) => ({
+        label: `${code.toUpperCase()}`,
+        value: code,
+      })),
+    [],
+  );
+
+  const initialAccountValues = useMemo(
+    () => ({
+      email: "isim.soyisim@sirket.io",
+      firstName: "Ad",
+      lastName: "Soyad",
+      language: locale,
+    }),
+    [locale],
+  );
 
   const handleAccountSave = () => {
     setIsAccountSaved(true);
@@ -89,13 +105,17 @@ export default function ProfilePage() {
     <main className="min-h-screen bg-zinc-100 px-4 py-12">
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-6">
         <div className="rounded-2xl bg-white px-6 py-4 text-center shadow-sm">
-          <Title level={3} className="!m-0">Profil Ayarları</Title>
+          <Title level={3} className="!m-0">
+            Profil Ayarları
+          </Title>
           <Text type="secondary">Hesap bilgilerini güncelle, güvenliğini koru.</Text>
         </div>
 
         <Card className="border-none shadow-lg">
           <div className="mb-6">
-            <Title level={4} className="!m-0">Hesap Ayarları</Title>
+            <Title level={4} className="!m-0">
+              Hesap Ayarları
+            </Title>
             <Text type="secondary">Hesabına ait temel bilgileri yönet.</Text>
           </div>
 
@@ -103,12 +123,7 @@ export default function ProfilePage() {
             layout="vertical"
             requiredMark={false}
             onFinish={handleAccountSave}
-            initialValues={{
-              email: "isim.soyisim@sirket.io",
-              firstName: "Ad",
-              lastName: "Soyad",
-              language: "tr",
-            }}
+            initialValues={initialAccountValues}
             className="grid gap-4 md:grid-cols-2"
           >
             <Form.Item label="Email" name="email" className="md:col-span-2">
@@ -134,12 +149,7 @@ export default function ProfilePage() {
               className="md:col-span-2"
               rules={[{ required: true, message: "Lütfen doğum tarihini seç." }]}
             >
-              <DatePicker
-                format="DD.MM.YYYY"
-                placeholder="Gün/Ay/Yıl"
-                size="large"
-                className="w-full"
-              />
+              <DatePicker format="DD.MM.YYYY" placeholder="Gün/Ay/Yıl" size="large" className="w-full" />
             </Form.Item>
             <Form.Item
               label="Platform Dili"
@@ -147,7 +157,7 @@ export default function ProfilePage() {
               className="md:col-span-2"
               rules={[{ required: true, message: "Bir dil seç." }]}
             >
-              <Select size="large" options={languageOptions} />
+              <Select size="large" options={languageOptions} placeholder="Dil seçin" />
             </Form.Item>
             <div className="md:col-span-2 flex justify-end">
               <Button type="primary" size="large" htmlType="submit" className="rounded-full px-8">
@@ -159,7 +169,9 @@ export default function ProfilePage() {
 
         <Card className="border-none shadow-lg">
           <div className="mb-6">
-            <Title level={4} className="!m-0">Şifre Ayarları</Title>
+            <Title level={4} className="!m-0">
+              Şifre Ayarları
+            </Title>
             <Text type="secondary">Kişisel verilerini korumak için güçlü bir şifre oluştur.</Text>
           </div>
 
@@ -179,16 +191,8 @@ export default function ProfilePage() {
               <Input.Password placeholder="Mevcut şifre" size="large" />
             </Form.Item>
             <div className="md:col-span-2 grid gap-4 md:grid-cols-2">
-              <Form.Item
-                label="Yeni Şifre"
-                name="newPassword"
-                rules={[{ validator: validateNewPassword }]}
-              >
-                <Input.Password
-                  placeholder="Şifre girin"
-                  size="large"
-                  onChange={(event) => setPasswordValue(event.target.value)}
-                />
+              <Form.Item label="Yeni Şifre" name="newPassword" rules={[{ validator: validateNewPassword }]}>
+                <Input.Password placeholder="Şifre girin" size="large" onChange={(event) => setPasswordValue(event.target.value)} />
               </Form.Item>
               <Form.Item
                 label="Yeni Şifre Tekrar"
@@ -205,12 +209,7 @@ export default function ProfilePage() {
                 const satisfied = passwordStatus[rule.key];
                 const Icon = satisfied ? CheckCircleFilled : CloseCircleFilled;
                 return (
-                  <div
-                    key={rule.key}
-                    className={`flex items-center gap-3 text-sm font-medium ${
-                      satisfied ? "text-zinc-700" : "text-red-500"
-                    }`}
-                  >
+                  <div key={rule.key} className={`flex items-center gap-3 text-sm font-medium ${satisfied ? "text-zinc-700" : "text-red-500"}`}>
                     <Icon className={satisfied ? "text-blue-500" : "text-red-400"} />
                     {rule.label}
                 </div>
@@ -245,11 +244,7 @@ export default function ProfilePage() {
           onOk={closePasswordModal}
           onCancel={closePasswordModal}
         >
-          <p>
-            {passwordModal.success
-              ? "Şifreniz başarıyla güncellendi."
-              : "Şifre gereksinimlerini kontrol edip tekrar deneyin."}
-          </p>
+          <p>{passwordModal.success ? "Şifreniz başarıyla güncellendi." : "Şifre gereksinimlerini kontrol edip tekrar deneyin."}</p>
         </Modal>
       </div>
     </main>

@@ -1,0 +1,11 @@
+{
+  "title": "Product Details",
+  "labels": {
+    "title": "Title",
+    "ratingCount": "Rating Count"
+  },
+  "links": {
+    "backToList": "← All Products"
+  }
+}
+

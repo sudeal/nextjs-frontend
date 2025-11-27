@@ -1,0 +1,23 @@
+{
+  "breadcrumb": {
+    "back": "← Geri Dön",
+    "flow": "Ticaret Süreçleri",
+    "companyProcesses": "Şirkete Ait Süreçler",
+    "declarations": "Beyannameler",
+    "detail": "Beyanname Detay"
+  },
+  "summary": {
+    "title": "Özet Beyan"
+  },
+  "fields": {
+    "preparerPerson": "Hazırlayan Kişi *",
+    "code": "Kod"
+  },
+  "placeholders": {
+    "code": "Kod"
+  },
+  "table": {
+    "productCode": "ÜRÜN GTIP"
+  }
+}
+

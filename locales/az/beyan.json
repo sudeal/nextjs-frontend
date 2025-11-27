@@ -1,0 +1,23 @@
+{
+  "breadcrumb": {
+    "back": "← Geri qayıt",
+    "flow": "Ticarət prosesləri",
+    "companyProcesses": "Şirkət prosesləri",
+    "declarations": "Bəyanlar",
+    "detail": "Bəyan detalları"
+  },
+  "summary": {
+    "title": "Özət Bəyan"
+  },
+  "fields": {
+    "preparerPerson": "Hazırlayan şəxs *",
+    "code": "Kod"
+  },
+  "placeholders": {
+    "code": "Kod"
+  },
+  "table": {
+    "productCode": "MƏHSUL HS KODU"
+  }
+}
+

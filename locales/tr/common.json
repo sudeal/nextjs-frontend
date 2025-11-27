@@ -1,0 +1,141 @@
+{
+  "header": {
+    "brand": "Marka",
+    "notifications": "Bildirimler",
+    "workflow": {
+      "label": "İş Akışları",
+      "items": {
+        "application": {
+          "title": "İşlem Başvurusu",
+          "description": "Yeni işlemleri başlat ve yönet."
+        },
+        "statement": {
+          "title": "İşlem Beyanı",
+          "description": "Beyan detaylarını düzenle."
+        },
+        "tempExport": {
+          "title": "Geçici İhracat Formu",
+          "description": "İhracat formlarını yönet."
+        },
+        "loadingList": {
+          "title": "Yükleme Listesi",
+          "description": "Gönderi kalemlerini görüntüle."
+        },
+        "compliance": {
+          "title": "Ürün Uygunluk Kontrolleri",
+          "description": "Kalite ve uygunluk takibi."
+        },
+        "payment": {
+          "title": "Ödeme Bildirimi",
+          "description": "Ödeme durumlarını izle."
+        },
+        "preNotice": {
+          "title": "Gönderi Ön Bildirimi",
+          "description": "Gönderi bildirimlerini yönet."
+        },
+        "transit": {
+          "title": "Geçiş Beyannamesi",
+          "description": "Transit süreçlerini takip et."
+        },
+        "sbOperations": {
+          "title": "SB Operasyon Başvurusu",
+          "description": "Operasyon taleplerini ilet."
+        },
+        "insurance": {
+          "title": "Lojistik Sigorta Kaydı",
+          "description": "Sigorta kayıtlarını güncelle."
+        },
+        "invoice": {
+          "title": "İşlem Faturası",
+          "description": "Fatura detaylarını incele."
+        }
+      }
+    },
+    "pricing": {
+      "label": "Fiyatlandırma",
+      "items": {
+        "transport": {
+          "title": "Taşıma Hizmeti",
+          "description": "Taşıma ücretlerini izle."
+        },
+        "risk": {
+          "title": "Risk Yönetimi",
+          "description": "Risk planlarını optimize et."
+        },
+        "stock": {
+          "title": "Stok Yönetimi",
+          "description": "Stok seviyelerini denetle."
+        },
+        "payment": {
+          "title": "Ödeme Güvencesi",
+          "description": "Ödeme güvenliğini artır."
+        }
+      }
+    },
+    "nav": {
+      "track": "Süreç Takibi",
+      "about": "Hakkımızda",
+      "declaration": "Beyan",
+      "product": "Ürün",
+      "product2": "Ürün 2",
+      "profile": "Profil"
+    },
+    "language": {
+      "label": "Dil",
+      "options": {
+        "tr": "TR - Türkçe",
+        "en": "EN - English",
+        "az": "AZ - Azərbaycan",
+        "ru": "RU - Русский"
+      }
+    },
+    "user": {
+      "name": "İsim Soyisim",
+      "company": "Rudiq Limited A.Ş."
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} Tüm Hakları Saklıdır."
+  },
+  "actions": {
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "saveChanges": "Değişiklikleri Kaydet",
+    "viewDetail": "Detay",
+    "back": "← Geri Dön",
+    "create": "Oluştur",
+    "add": "Ekle",
+    "tryAgain": "Tekrar Dene",
+    "confirm": "Tamam",
+    "close": "Kapat"
+  },
+  "messages": {
+    "operationFailed": "İşlem başarısız",
+    "unknownError": "Bilinmeyen bir hata oluştu.",
+    "productsNotLoaded": "Ürün verileri alınamadı.",
+    "selectFromMenu": "Menüden bir işlem seçerek içeriği görüntüleyin.",
+    "invalidProductId": "Geçersiz ürün ID'si.",
+    "productNotFound": "Ürün bulunamadı.",
+    "accountSaved": "Hesap bilgileriniz başarıyla kaydedildi.",
+    "passwordUpdated": "Şifreniz başarıyla güncellendi.",
+    "passwordRequirements": "Şifre gereksinimlerini kontrol edip tekrar deneyin."
+  },
+  "status": {
+    "success": "Başarılı",
+    "error": "Hata",
+    "inProgress": "Devam Ediyor",
+    "completed": "Tamamlandı",
+    "yes": "Evet",
+    "no": "Hayır"
+  },
+  "table": {
+    "id": "ID",
+    "actions": "Aksiyonlar",
+    "product": "Ürün",
+    "price": "Fiyat",
+    "score": "Puan",
+    "category": "Kategori",
+    "description": "Açıklama"
+  }
+}
+

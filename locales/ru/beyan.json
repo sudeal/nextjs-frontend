@@ -1,0 +1,23 @@
+{
+  "breadcrumb": {
+    "back": "← Назад",
+    "flow": "Торговые процессы",
+    "companyProcesses": "Процессы компании",
+    "declarations": "Декларации",
+    "detail": "Детали декларации"
+  },
+  "summary": {
+    "title": "Сводная декларация"
+  },
+  "fields": {
+    "preparerPerson": "Подготовил *",
+    "code": "Код"
+  },
+  "placeholders": {
+    "code": "Код"
+  },
+  "table": {
+    "productCode": "КОД ТН ВЭД"
+  }
+}
+

@@ -1,0 +1,23 @@
+{
+  "breadcrumb": {
+    "back": "← Go Back",
+    "flow": "Trade Processes",
+    "companyProcesses": "Company Workflows",
+    "declarations": "Declarations",
+    "detail": "Declaration Detail"
+  },
+  "summary": {
+    "title": "Summary Declaration"
+  },
+  "fields": {
+    "preparerPerson": "Preparer *",
+    "code": "Code"
+  },
+  "placeholders": {
+    "code": "Code"
+  },
+  "table": {
+    "productCode": "PRODUCT HS CODE"
+  }
+}
+

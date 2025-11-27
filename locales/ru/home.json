@@ -1,0 +1,60 @@
+{
+  "tabs": {
+    "workflow": "Процессы",
+    "declaration": "Декларации",
+    "responsible": "Ответственные"
+  },
+  "workflow": {
+    "title": "Рабочие процессы",
+    "searchPlaceholder": "Поиск процесса...",
+    "buttonLabel": "Запустить процесс",
+    "columns": {
+      "processName": "Название процесса",
+      "creator": "Инициатор",
+      "createdAt": "Время старта",
+      "authorityMail": "Email контакта"
+    },
+    "rows": {
+      "processName": "Процесс {{index}}",
+      "creator": "Имя Фамилия",
+      "createdAt": "20.12.2025 13:08"
+    }
+  },
+  "declaration": {
+    "title": "Форма временного экспорта",
+    "searchPlaceholder": "Поиск декларации...",
+    "buttonLabel": "Создать декларацию",
+    "columns": {
+      "name": "Название формы",
+      "tradeType": "Тип операции",
+      "createdAt": "Дата создания",
+      "creator": "Автор",
+      "status": "Статус"
+    },
+    "rows": {
+      "name": "Форма 1",
+      "tradeType": {
+        "import": "Импорт",
+        "export": "Экспорт"
+      },
+      "creator": "Имя Фамилия"
+    }
+  },
+  "responsible": {
+    "title": "Ответственные лица",
+    "searchPlaceholder": "Поиск сотрудника...",
+    "buttonLabel": "Добавить ответственного",
+    "columns": {
+      "name": "Имя",
+      "role": "Роль",
+      "mail": "Email"
+    },
+    "rows": {
+      "responsible1": "Ответственный 1",
+      "responsible2": "Ответственный 2",
+      "operations": "Операции",
+      "finance": "Финансы"
+    }
+  }
+}
+

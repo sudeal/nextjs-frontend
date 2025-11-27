@@ -1,0 +1,68 @@
+{
+  "banner": {
+    "title": "Profil Parametrləri",
+    "subtitle": "Hesab məlumatlarını yenilə və təhlükəsiz qal."
+  },
+  "account": {
+    "title": "Hesab Parametrləri",
+    "subtitle": "Hesabının əsas məlumatlarını idarə et.",
+    "initial": {
+      "firstName": "Ad",
+      "lastName": "Soyad"
+    },
+    "fields": {
+      "email": "Email",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "birthDate": "Doğum tarixi",
+      "language": "Platform dili"
+    },
+    "placeholders": {
+      "firstName": "Adı daxil et",
+      "lastName": "Soyadı daxil et",
+      "birthDate": "Gün/Ay/İl",
+      "language": "Dil seç"
+    }
+  },
+  "password": {
+    "title": "Şifrə Parametrləri",
+    "subtitle": "Məlumatlarını qorumaq üçün güclü şifrə yarat.",
+    "fields": {
+      "current": "Mövcud şifrə",
+      "new": "Yeni şifrə",
+      "confirm": "Yeni şifrə təkrar"
+    },
+    "placeholders": {
+      "current": "Mövcud şifrə",
+      "new": "Şifrə daxil et",
+      "confirm": "Şifrəni təkrar daxil et"
+    },
+    "rules": {
+      "minLength": "Minimum 8 simvol",
+      "special": "Ən azı 1 xüsusi simvol (%,&,.)",
+      "uppercase": "Ən azı bir böyük hərf"
+    }
+  },
+  "validation": {
+    "account": {
+      "firstName": "Zəhmət olmasa adınızı daxil edin.",
+      "lastName": "Zəhmət olmasa soyadınızı daxil edin.",
+      "birthDate": "Doğum tarixini seçin.",
+      "language": "Dil seçin."
+    },
+    "password": {
+      "currentRequired": "Mövcud şifrəni daxil et.",
+      "requiredNew": "Yeni şifrəni daxil et.",
+      "sameAsCurrent": "Yeni şifrə mövcud şifrə ilə eyni ola bilməz.",
+      "requirements": "Şifrə tələblərə cavab vermir.",
+      "requiredConfirm": "Yeni şifrəni təkrar daxil et.",
+      "mismatch": "Şifrələr uyğun gəlmir."
+    }
+  },
+  "modals": {
+    "accountSaved": "Hesab məlumatların saxlanıldı.",
+    "passwordSuccess": "Şifrən uğurla yeniləndi.",
+    "passwordError": "Şifrə tələblərini yoxlayıb yenidən cəhd et."
+  }
+}
+

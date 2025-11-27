@@ -1,6 +1,19 @@
-import axios from "axios";
+import { apiClient, API_BASE_URL } from "./httpClient";
 
-const API_BASE_URL = "https://fakestoreapi.com";
+const buildHeaders = (): HeadersInit => {
+  const headers: HeadersInit = {
+    "Content-Type": "application/json",
+  };
+
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("token");
+    if (token) {
+      headers.Authorization = `Bearer ${token}`;
+    }
+  }
+
+  return headers;
+};
 
 export interface Product {
   id: number;
@@ -20,9 +33,7 @@ export async function getProductsWithFetch(): Promise<Product[]> {
   try {
     const response = await fetch(`${API_BASE_URL}/products`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: buildHeaders(),
     });
 
     if (!response.ok) {
@@ -40,7 +51,7 @@ export async function getProductsWithFetch(): Promise<Product[]> {
 
 export async function getProductsWithAxios(): Promise<Product[]> {
   try {
-    const response = await axios.get<Product[]>(`${API_BASE_URL}/products`);
+    const response = await apiClient.get<Product[]>("/products");
     return response.data;
   } catch (error) {
     console.error("Axios error:", error);
@@ -53,9 +64,7 @@ export async function getProductByIdWithFetch(id: number): Promise<Product> {
   try {
     const response = await fetch(`${API_BASE_URL}/products/${id}`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: buildHeaders(),
     });
 
     if (!response.ok) {
@@ -73,7 +82,7 @@ export async function getProductByIdWithFetch(id: number): Promise<Product> {
 
 export async function getProductByIdWithAxios(id: number): Promise<Product> {
   try {
-    const response = await axios.get<Product>(`${API_BASE_URL}/products/${id}`);
+    const response = await apiClient.get<Product>(`/products/${id}`);
     return response.data;
   } catch (error) {
     console.error("Axios error:", error);

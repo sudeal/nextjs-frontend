@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Alert, Spin } from "antd";
 import { useParams } from "next/navigation";
+import useTranslation from "next-translate/useTranslation";
+
 import { getProductByIdWithFetch } from "@/core/api";
 
 type Product = {
@@ -22,6 +24,9 @@ type Product = {
 export default function Product2DetailPage() {
   const params = useParams();
   const id = params?.id as string;
+  const locale = (params?.lang as string) ?? "tr";
+  const { t } = useTranslation("productDetail");
+  const { t: tCommon } = useTranslation("common");
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,14 +40,14 @@ export default function Product2DetailPage() {
 
       try {
         const productId = Number(id);
-        if (isNaN(productId)) {
-          throw new Error("Geçersiz ürün ID'si.");
+        if (Number.isNaN(productId)) {
+          throw new Error(tCommon("messages.invalidProductId"));
         }
 
         const product = await getProductByIdWithFetch(productId);
         setProduct(product);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Bilinmeyen bir hata oluştu.");
+        setError(err instanceof Error ? err.message : tCommon("messages.unknownError"));
       } finally {
         setLoading(false);
       }
@@ -63,17 +68,9 @@ export default function Product2DetailPage() {
     return (
       <div className="min-h-screen bg-slate-100 px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <Alert
-            type="error"
-            message="Hata"
-            description={error || "Ürün bulunamadı."}
-            className="rounded-2xl"
-          />
-          <Link
-            href="/product2"
-            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sky-700 transition hover:text-sky-900"
-          >
-            ← Tüm Products
+          <Alert type="error" message={tCommon("status.error")} description={error || tCommon("messages.productNotFound")} className="rounded-2xl" />
+          <Link href={`/${locale}/product2`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sky-700 transition hover:text-sky-900">
+            {locale === "tr" ? "Tüm Ürünler" : "All Products"}
           </Link>
         </div>
       </div>
@@ -82,27 +79,24 @@ export default function Product2DetailPage() {
 
   const detailRows = [
     { label: "ID", value: product.id.toString() },
-    { label: "Başlık", value: product.title },
-    { label: "Kategori", value: product.category },
-    { label: "Fiyat", value: `$${product.price.toFixed(2)}` },
-    { label: "Puan", value: `${product.rating.rate.toFixed(1)}` },
-    { label: "Oy Sayısı", value: product.rating.count.toString() },
-    { label: "Açıklama", value: product.description },
+    { label: locale === "tr" ? "Başlık" : "Title", value: product.title },
+    { label: locale === "tr" ? "Kategori" : "Category", value: product.category },
+    { label: locale === "tr" ? "Fiyat" : "Price", value: `$${product.price.toFixed(2)}` },
+    { label: locale === "tr" ? "Puan" : "Score", value: `${product.rating.rate.toFixed(1)}` },
+    { label: locale === "tr" ? "Oy Sayısı" : "Rating Count", value: product.rating.count.toString() },
+    { label: locale === "tr" ? "Açıklama" : "Description", value: product.description },
   ];
 
   return (
     <div className="min-h-screen bg-slate-100 px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-4xl flex-col gap-6">
-        <Link
-          href="/product2"
-          className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-sky-700 transition hover:text-sky-900"
-        >
-          ← Tüm Products
+        <Link href={`/${locale}/product2`} className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-sky-700 transition hover:text-sky-900">
+          {locale === "tr" ? "Tüm Ürünler" : "All Products"}
         </Link>
 
         <div className="rounded-3xl bg-white p-6 shadow-lg sm:p-10">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-slate-900">Ürün Detayları</h1>
+            <h1 className="text-2xl font-bold text-slate-900">{locale === "tr" ? "Ürün Detayları" : "Product Details"}</h1>
           </div>
 
           <div className="flex flex-col gap-6 md:flex-row">

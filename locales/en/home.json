@@ -1,0 +1,60 @@
+{
+  "tabs": {
+    "workflow": "Process Flows",
+    "declaration": "Declarations",
+    "responsible": "Responsible People"
+  },
+  "workflow": {
+    "title": "Process Flows",
+    "searchPlaceholder": "Search process...",
+    "buttonLabel": "Start New Process",
+    "columns": {
+      "processName": "Flow Name",
+      "creator": "Owner",
+      "createdAt": "Start Time",
+      "authorityMail": "Contact Email"
+    },
+    "rows": {
+      "processName": "Flow {{index}}",
+      "creator": "Name Surname",
+      "createdAt": "12/20/2025 13:08"
+    }
+  },
+  "declaration": {
+    "title": "Temporary Export Form",
+    "searchPlaceholder": "Search declaration...",
+    "buttonLabel": "Create Declaration",
+    "columns": {
+      "name": "Export Form Name",
+      "tradeType": "Trade Type",
+      "createdAt": "Created At",
+      "creator": "Created By",
+      "status": "Status"
+    },
+    "rows": {
+      "name": "Form 1",
+      "tradeType": {
+        "import": "Import",
+        "export": "Export"
+      },
+      "creator": "Name Surname"
+    }
+  },
+  "responsible": {
+    "title": "Responsible People",
+    "searchPlaceholder": "Search person...",
+    "buttonLabel": "Add Responsible",
+    "columns": {
+      "name": "Name",
+      "role": "Role",
+      "mail": "Email"
+    },
+    "rows": {
+      "responsible1": "Owner 1",
+      "responsible2": "Owner 2",
+      "operations": "Operations",
+      "finance": "Finance"
+    }
+  }
+}
+

@@ -1,0 +1,60 @@
+{
+  "tabs": {
+    "workflow": "İşlem Süreçleri",
+    "declaration": "Beyan İşlemleri",
+    "responsible": "Sorumlu Kişiler"
+  },
+  "workflow": {
+    "title": "İşlem Süreçleri",
+    "searchPlaceholder": "İşlem Süreci Ara...",
+    "buttonLabel": "İşlem Süreci Başlat",
+    "columns": {
+      "processName": "Akış Adı",
+      "creator": "Başlatan",
+      "createdAt": "Başlama Zamanı",
+      "authorityMail": "İlgili Kişi Maili"
+    },
+    "rows": {
+      "processName": "Akış {{index}}",
+      "creator": "İsim Soyisim",
+      "createdAt": "20.12.2025 13:08"
+    }
+  },
+  "declaration": {
+    "title": "Geçici İhracat Formu",
+    "searchPlaceholder": "Beyanname Ara...",
+    "buttonLabel": "Yeni Beyanname Oluştur",
+    "columns": {
+      "name": "İhracat Form Adı",
+      "tradeType": "İşlem Türü",
+      "createdAt": "Oluşturulma Tarihi",
+      "creator": "İşlemi Başlatan",
+      "status": "İşlem Durumu"
+    },
+    "rows": {
+      "name": "Form 1",
+      "tradeType": {
+        "import": "İthalat",
+        "export": "İhracat"
+      },
+      "creator": "İsim Soyisim"
+    }
+  },
+  "responsible": {
+    "title": "Sorumlu Kişiler",
+    "searchPlaceholder": "Sorumlu Ara...",
+    "buttonLabel": "Yeni Sorumlu Ekle",
+    "columns": {
+      "name": "İsim",
+      "role": "Görev",
+      "mail": "Mail"
+    },
+    "rows": {
+      "responsible1": "Sorumlu 1",
+      "responsible2": "Sorumlu 2",
+      "operations": "Operasyon",
+      "finance": "Finans"
+    }
+  }
+}
+

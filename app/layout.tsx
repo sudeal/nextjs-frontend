@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
 import "antd/dist/reset.css";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import i18nConfig from "@/i18n";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,19 +20,18 @@ export const metadata: Metadata = {
   description: "Profil yonlendirme ve tanitim sayfasi",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const currentLocale = headersList.get("x-locale") ?? i18nConfig.defaultLocale;
+
   return (
-    <html lang="tr">
+    <html lang={currentLocale} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} bg-zinc-100 antialiased`}>
-        <div className="flex min-h-screen flex-col bg-zinc-100">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        {children}
       </body>
     </html>
   );

@@ -1,0 +1,60 @@
+{
+  "tabs": {
+    "workflow": "Proses Axınları",
+    "declaration": "Bəyanlar",
+    "responsible": "Məsul Şəxslər"
+  },
+  "workflow": {
+    "title": "Proses Axınları",
+    "searchPlaceholder": "Proses axtar...",
+    "buttonLabel": "Yeni proses başlat",
+    "columns": {
+      "processName": "Axın adı",
+      "creator": "Başladan",
+      "createdAt": "Başlama vaxtı",
+      "authorityMail": "Əlaqə e-poçtu"
+    },
+    "rows": {
+      "processName": "Axın {{index}}",
+      "creator": "Ad Soyad",
+      "createdAt": "20.12.2025 13:08"
+    }
+  },
+  "declaration": {
+    "title": "Müvəqqəti İxrac Formu",
+    "searchPlaceholder": "Bəyan axtar...",
+    "buttonLabel": "Yeni bəyan yarat",
+    "columns": {
+      "name": "İxrac formunun adı",
+      "tradeType": "Əməliyyat növü",
+      "createdAt": "Yaradılma tarixi",
+      "creator": "İcraçı",
+      "status": "Status"
+    },
+    "rows": {
+      "name": "Form 1",
+      "tradeType": {
+        "import": "İdxal",
+        "export": "İxrac"
+      },
+      "creator": "Ad Soyad"
+    }
+  },
+  "responsible": {
+    "title": "Məsul Şəxslər",
+    "searchPlaceholder": "Şəxs axtar...",
+    "buttonLabel": "Yeni məsul əlavə et",
+    "columns": {
+      "name": "Ad",
+      "role": "Vəzifə",
+      "mail": "E-poçt"
+    },
+    "rows": {
+      "responsible1": "Məsul 1",
+      "responsible2": "Məsul 2",
+      "operations": "Əməliyyat",
+      "finance": "Maliyyə"
+    }
+  }
+}
+

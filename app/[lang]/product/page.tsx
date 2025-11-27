@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { Alert, Spin } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
@@ -18,79 +19,84 @@ type ProductRecord = CustomTableRecord & {
   };
 };
 
-const columns: ColumnsType<CustomTableRecord> = [
-  {
-    title: "Ürün",
-    dataIndex: "title",
-    key: "title",
-    render: (_, record) => {
-      const product = record as ProductRecord;
-      return (
-        <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white p-1 shadow-sm">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="h-full w-full object-contain"
-              loading="lazy"
-            />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-slate-800">{product.title}</p>
-            <p className="text-xs capitalize text-slate-500">{product.category}</p>
-          </div>
-        </div>
-      );
-    },
-  },
-  {
-    title: "Fiyat",
-    dataIndex: "price",
-    key: "price",
-    width: 140,
-    align: "left",
-    render: (value) => (
-      <span className="font-semibold text-slate-800">${Number(value).toFixed(2)}</span>
-    ),
-  },
-  {
-    title: "Puan",
-    dataIndex: ["rating", "rate"],
-    key: "rating",
-    width: 180,
-    align: "left",
-    render: (_, record) => {
-      const product = record as ProductRecord;
-      return (
-        <div className="flex items-center gap-2">
-          <span className="font-semibold text-slate-800">{product.rating.rate.toFixed(1)}</span>
-          <span className="text-xs text-slate-500">({product.rating.count})</span>
-        </div>
-      );
-    },
-  },
-  {
-    title: "",
-    key: "detail",
-    width: 140,
-    render: (_, record) => {
-      const product = record as ProductRecord;
-      return (
-        <Link
-          href={`/product/detail/${product.id}`}
-          className="text-sm font-semibold text-sky-600 transition hover:text-sky-800"
-        >
-          Detail
-        </Link>
-      );
-    },
-  },
-];
-
 export default function ProductPage() {
   const [products, setProducts] = useState<ProductRecord[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const params = useParams<{ lang: string }>();
+  const locale = params?.lang ?? "tr";
+
+  const columns: ColumnsType<CustomTableRecord> = useMemo(
+    () => [
+      {
+        title: "Ürün",
+        dataIndex: "title",
+        key: "title",
+        render: (_, record) => {
+          const product = record as ProductRecord;
+          return (
+            <div className="flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white p-1 shadow-sm">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="h-full w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-slate-800">{product.title}</p>
+                <p className="text-xs capitalize text-slate-500">{product.category}</p>
+              </div>
+            </div>
+          );
+        },
+      },
+      {
+        title: "Fiyat",
+        dataIndex: "price",
+        key: "price",
+        width: 140,
+        align: "left",
+        render: (value) => (
+          <span className="font-semibold text-slate-800">${Number(value).toFixed(2)}</span>
+        ),
+      },
+      {
+        title: "Puan",
+        dataIndex: ["rating", "rate"],
+        key: "rating",
+        width: 180,
+        align: "left",
+        render: (_, record) => {
+          const product = record as ProductRecord;
+          return (
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-slate-800">{product.rating.rate.toFixed(1)}</span>
+              <span className="text-xs text-slate-500">({product.rating.count})</span>
+            </div>
+          );
+        },
+      },
+      {
+        title: "",
+        key: "detail",
+        width: 140,
+        render: (_, record) => {
+          const product = record as ProductRecord;
+          return (
+            <Link
+              href={`/${locale}/product/detail/${product.id}`}
+              className="text-sm font-semibold text-sky-600 transition hover:text-sky-800"
+            >
+              Detay
+            </Link>
+          );
+        },
+      },
+    ],
+    [locale],
+  );
 
   const tableData = useMemo(
     () =>
@@ -132,7 +138,6 @@ export default function ProductPage() {
       <div className="mx-auto max-w-6xl space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-           
             <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">Product Listesi</h1>
           </div>
         </div>

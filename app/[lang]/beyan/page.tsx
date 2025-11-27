@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import {
   Button,
   Input,
@@ -25,6 +26,8 @@ type ProductRecord = {
 };
 
 export default function BeyanPage() {
+  const params = useParams<{ lang: string }>();
+  const locale = params?.lang ?? "tr";
   const [products, setProducts] = useState<ProductRecord[]>([
     { id: "1", code: "07.02.09.0801321", checked: true },
     { id: "2", code: "07.02.09.0801322", checked: true },
@@ -54,8 +57,8 @@ export default function BeyanPage() {
           onChange={(e) => {
             setProducts(
               products.map((p) =>
-                p.id === record.id ? { ...p, checked: e.target.checked } : p
-              )
+                p.id === record.id ? { ...p, checked: e.target.checked } : p,
+              ),
             );
           }}
         />
@@ -98,10 +101,7 @@ export default function BeyanPage() {
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Breadcrumb Navigasyon */}
         <div className="flex items-center gap-3 text-sm">
-          <Link
-            href="/"
-            className="text-blue-800 underline hover:text-blue-800"
-          >
+          <Link href={`/${locale}`} className="text-blue-800 underline hover:text-blue-800">
             ← Geri Dön
           </Link>
           <span className="text-slate-300">|</span>
@@ -116,9 +116,7 @@ export default function BeyanPage() {
 
         {/* Sayfa başlığı */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <h1 className="text-2xl font-bold text-slate-800 sm:text-3xl">
-            Özet Beyan
-          </h1>
+          <h1 className="text-2xl font-bold text-slate-800 sm:text-3xl">Özet Beyan</h1>
           <Button className="!rounded-full !bg-sky-600 !px-4 !py-2 !text-white hover:!bg-sky-700">
             Değişiklikleri Kaydet
           </Button>
@@ -128,9 +126,7 @@ export default function BeyanPage() {
         <div className="rounded-3xl bg-white p-6 shadow-lg sm:p-8">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <label className="mb-2 block text-sm font-bold text-slate-700">
-                Hazırlayan Kişi *
-              </label>
+              <label className="mb-2 block text-sm font-bold text-slate-700">Hazırlayan Kişi *</label>
               <Input
                 placeholder="Hazırlayan Kişi"
                 className="h-10 rounded-lg border-slate-200 !bg-[#f0f0f0]"
@@ -138,9 +134,7 @@ export default function BeyanPage() {
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-bold text-slate-700">
-                Kod
-              </label>
+              <label className="mb-2 block text-sm font-bold text-slate-700">Kod</label>
               <Input
                 placeholder="Kod"
                 className="h-10 rounded-lg border-slate-200 !bg-[#f0f0f0]"
@@ -1059,7 +1053,7 @@ export default function BeyanPage() {
               showSizeChanger={false}
               onChange={(page) => setCurrentPage(page)}
               showTotal={(total, range) =>
-                `Showing ${range[0]}-${range[1]} of ${total}`
+                `${total} kayıt içerisinden ${range[0]}-${range[1]} arası gösteriliyor`
               }
             />
           </div>

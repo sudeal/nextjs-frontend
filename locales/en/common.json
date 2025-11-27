@@ -1,0 +1,141 @@
+{
+  "header": {
+    "brand": "Brand",
+    "notifications": "Notifications",
+    "workflow": {
+      "label": "Workflows",
+      "items": {
+        "application": {
+          "title": "Process Application",
+          "description": "Start and manage new submissions."
+        },
+        "statement": {
+          "title": "Process Declaration",
+          "description": "Edit declaration details."
+        },
+        "tempExport": {
+          "title": "Temporary Export Form",
+          "description": "Manage export paperwork."
+        },
+        "loadingList": {
+          "title": "Loading List",
+          "description": "Review shipment items."
+        },
+        "compliance": {
+          "title": "Product Compliance",
+          "description": "Track quality and compliance."
+        },
+        "payment": {
+          "title": "Payment Notice",
+          "description": "Monitor payment statuses."
+        },
+        "preNotice": {
+          "title": "Shipment Pre-Notice",
+          "description": "Handle shipment notifications."
+        },
+        "transit": {
+          "title": "Transit Declaration",
+          "description": "Follow transit procedures."
+        },
+        "sbOperations": {
+          "title": "SB Operations Request",
+          "description": "Submit new operation requests."
+        },
+        "insurance": {
+          "title": "Logistics Insurance",
+          "description": "Update insurance records."
+        },
+        "invoice": {
+          "title": "Process Invoice",
+          "description": "Inspect invoice details."
+        }
+      }
+    },
+    "pricing": {
+      "label": "Pricing",
+      "items": {
+        "transport": {
+          "title": "Transportation Service",
+          "description": "Track freight costs."
+        },
+        "risk": {
+          "title": "Risk Management",
+          "description": "Optimize risk scenarios."
+        },
+        "stock": {
+          "title": "Inventory Control",
+          "description": "Monitor stock levels."
+        },
+        "payment": {
+          "title": "Payment Assurance",
+          "description": "Increase payment security."
+        }
+      }
+    },
+    "nav": {
+      "track": "Process Tracking",
+      "about": "About",
+      "declaration": "Declaration",
+      "product": "Product",
+      "product2": "Product 2",
+      "profile": "Profile"
+    },
+    "language": {
+      "label": "Language",
+      "options": {
+        "tr": "TR - Turkish",
+        "en": "EN - English",
+        "az": "AZ - Azerbaijani",
+        "ru": "RU - Russian"
+      }
+    },
+    "user": {
+      "name": "Name Surname",
+      "company": "Rudiq Limited Inc."
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} All Rights Reserved."
+  },
+  "actions": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "saveChanges": "Save Changes",
+    "viewDetail": "Detail",
+    "back": "← Go Back",
+    "create": "Create",
+    "add": "Add",
+    "tryAgain": "Try Again",
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+  "messages": {
+    "operationFailed": "Operation failed",
+    "unknownError": "An unknown error occurred.",
+    "productsNotLoaded": "Products could not be loaded.",
+    "selectFromMenu": "Pick an item from the menu to view its content.",
+    "invalidProductId": "Invalid product ID.",
+    "productNotFound": "Product not found.",
+    "accountSaved": "Your account information has been saved.",
+    "passwordUpdated": "Your password has been updated.",
+    "passwordRequirements": "Check the password requirements and try again."
+  },
+  "status": {
+    "success": "Success",
+    "error": "Error",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "table": {
+    "id": "ID",
+    "actions": "Actions",
+    "product": "Product",
+    "price": "Price",
+    "score": "Score",
+    "category": "Category",
+    "description": "Description"
+  }
+}
+

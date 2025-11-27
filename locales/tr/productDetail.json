@@ -1,0 +1,11 @@
+{
+  "title": "Ürün Detayları",
+  "labels": {
+    "title": "Başlık",
+    "ratingCount": "Oy Sayısı"
+  },
+  "links": {
+    "backToList": "← Tüm Products"
+  }
+}
+

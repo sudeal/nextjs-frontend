@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 import i18nConfig from "@/i18n";
+import { setLocaleCookie } from "@/lib/locale";
 
 const workflowItems = [
   {
@@ -156,14 +157,14 @@ export function Header({ locale, dictionary }: HeaderProps) {
 
   const buildLocalizedHref = (href = "/") => {
     const normalized = href.startsWith("/") ? href : `/${href}`;
-    return `/${locale}${normalized === "/" ? "" : normalized}`;
+    return normalized === "/" ? "/" : normalized;
   };
 
   const handleLocaleChange = (nextLocale: string) => {
-    if (!pathname || nextLocale === locale) return;
-    const segments = pathname.split("/").filter(Boolean);
-    segments[0] = nextLocale;
-    router.push(`/${segments.join("/")}`);
+    if (nextLocale === locale) return;
+    setLocaleCookie(nextLocale);
+    window.dispatchEvent(new CustomEvent("localechange"));
+    router.refresh();
   };
 
   const getNavLinkClass = (href?: string) => {

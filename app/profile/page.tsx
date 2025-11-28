@@ -1,11 +1,11 @@
-﻿'use client';
+'use client';
 
-import { useMemo, useState } from "react";
-import { useParams } from "next/navigation";
+import { useMemo, useState, useEffect } from "react";
 import { CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
 import { Button, Card, DatePicker, Form, Input, Modal, Select, Typography } from "antd";
 
 import i18nConfig from "@/i18n";
+import { getLocaleFromCookie } from "@/lib/locale";
 
 const { Title, Text } = Typography;
 
@@ -28,8 +28,22 @@ export default function ProfilePage() {
   const [passwordForm] = Form.useForm();
   const [passwordValue, setPasswordValue] = useState("");
   const [passwordModal, setPasswordModal] = useState({ open: false, success: true });
-  const params = useParams<{ lang: string }>();
-  const locale = params?.lang ?? i18nConfig.defaultLocale;
+  const [locale, setLocale] = useState<string>(i18nConfig.defaultLocale);
+
+  useEffect(() => {
+    const currentLocale = getLocaleFromCookie();
+    setLocale(currentLocale);
+  }, []);
+
+  useEffect(() => {
+    const handleLocaleChange = () => {
+      const currentLocale = getLocaleFromCookie();
+      setLocale(currentLocale);
+    };
+    window.addEventListener("localechange", handleLocaleChange);
+    return () => window.removeEventListener("localechange", handleLocaleChange);
+  }, []);
+
   const languageOptions = useMemo(
     () =>
       i18nConfig.locales.map((code) => ({
@@ -250,3 +264,4 @@ export default function ProfilePage() {
     </main>
   );
 }
+

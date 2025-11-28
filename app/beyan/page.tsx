@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { getLocaleFromCookie } from "@/lib/locale";
 import {
   Button,
   Input,
@@ -26,8 +26,21 @@ type ProductRecord = {
 };
 
 export default function BeyanPage() {
-  const params = useParams<{ lang: string }>();
-  const locale = params?.lang ?? "tr";
+  const [locale, setLocale] = useState<string>("tr");
+  
+  useEffect(() => {
+    const currentLocale = getLocaleFromCookie();
+    setLocale(currentLocale);
+  }, []);
+  
+  useEffect(() => {
+    const handleLocaleChange = () => {
+      const currentLocale = getLocaleFromCookie();
+      setLocale(currentLocale);
+    };
+    window.addEventListener("localechange", handleLocaleChange);
+    return () => window.removeEventListener("localechange", handleLocaleChange);
+  }, []);
   const [products, setProducts] = useState<ProductRecord[]>([
     { id: "1", code: "07.02.09.0801321", checked: true },
     { id: "2", code: "07.02.09.0801322", checked: true },
@@ -101,7 +114,7 @@ export default function BeyanPage() {
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Breadcrumb Navigasyon */}
         <div className="flex items-center gap-3 text-sm">
-          <Link href={`/${locale}`} className="text-blue-800 underline hover:text-blue-800">
+          <Link href={`/`} className="text-blue-800 underline hover:text-blue-800">
             ← Geri Dön
           </Link>
           <span className="text-slate-300">|</span>
@@ -1062,3 +1075,4 @@ export default function BeyanPage() {
     </div>
   );
 }
+

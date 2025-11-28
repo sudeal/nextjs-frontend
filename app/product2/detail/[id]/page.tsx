@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Alert, Spin } from "antd";
 import { useParams } from "next/navigation";
+import { Alert, Spin } from "antd";
 import useTranslation from "next-translate/useTranslation";
 
 import { getProductByIdWithFetch } from "@/core/api";
+import { getLocaleFromCookie } from "@/lib/locale";
 
 type Product = {
   id: number;
@@ -24,12 +25,17 @@ type Product = {
 export default function Product2DetailPage() {
   const params = useParams();
   const id = params?.id as string;
-  const locale = (params?.lang as string) ?? "tr";
+  const [locale, setLocale] = useState<string>("tr");
   const { t } = useTranslation("productDetail");
   const { t: tCommon } = useTranslation("common");
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const currentLocale = getLocaleFromCookie();
+    setLocale(currentLocale);
+  }, []);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -54,7 +60,7 @@ export default function Product2DetailPage() {
     };
 
     fetchProduct();
-  }, [id]);
+  }, [id, tCommon]);
 
   if (loading) {
     return (
@@ -69,7 +75,7 @@ export default function Product2DetailPage() {
       <div className="min-h-screen bg-slate-100 px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <Alert type="error" message={tCommon("status.error")} description={error || tCommon("messages.productNotFound")} className="rounded-2xl" />
-          <Link href={`/${locale}/product2`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sky-700 transition hover:text-sky-900">
+          <Link href={`/product2`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sky-700 transition hover:text-sky-900">
             {locale === "tr" ? "Tüm Ürünler" : "All Products"}
           </Link>
         </div>
@@ -79,48 +85,41 @@ export default function Product2DetailPage() {
 
   const detailRows = [
     { label: "ID", value: product.id.toString() },
-    { label: locale === "tr" ? "Başlık" : "Title", value: product.title },
     { label: locale === "tr" ? "Kategori" : "Category", value: product.category },
     { label: locale === "tr" ? "Fiyat" : "Price", value: `$${product.price.toFixed(2)}` },
-    { label: locale === "tr" ? "Puan" : "Score", value: `${product.rating.rate.toFixed(1)}` },
-    { label: locale === "tr" ? "Oy Sayısı" : "Rating Count", value: product.rating.count.toString() },
-    { label: locale === "tr" ? "Açıklama" : "Description", value: product.description },
+    { label: locale === "tr" ? "Puan" : "Rating", value: `${product.rating.rate.toFixed(1)} (${product.rating.count})` },
   ];
 
   return (
     <div className="min-h-screen bg-slate-100 px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-4xl flex-col gap-6">
-        <Link href={`/${locale}/product2`} className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-sky-700 transition hover:text-sky-900">
-          {locale === "tr" ? "Tüm Ürünler" : "All Products"}
+      <div className="mx-auto max-w-4xl space-y-6">
+        <Link href="/product2" className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 transition hover:text-sky-900">
+          ← {locale === "tr" ? "Geri" : "Back"}
         </Link>
 
-        <div className="rounded-3xl bg-white p-6 shadow-lg sm:p-10">
-          <div className="mb-6">
-            <h1 className="text-2xl font-bold text-slate-900">{locale === "tr" ? "Ürün Detayları" : "Product Details"}</h1>
-          </div>
-
-          <div className="flex flex-col gap-6 md:flex-row">
-            <div className="flex flex-col items-center gap-4 md:w-1/3">
-              <div className="flex h-48 w-48 items-center justify-center rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-inner">
-                <img src={product.image} alt={product.title} className="h-full w-full object-contain" />
-              </div>
-              <div className="text-center">
-                <p className="text-sm uppercase tracking-widest text-slate-400">{product.category}</p>
-                <h2 className="mt-1 text-lg font-bold text-slate-900">{product.title}</h2>
-              </div>
+        <div className="rounded-3xl bg-white p-6 shadow-lg sm:p-8">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="flex items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 p-8">
+              <img src={product.image} alt={product.title} className="h-full max-h-96 w-full object-contain" />
             </div>
-            <div className="flex-1 space-y-6">
-              <div className="overflow-hidden rounded-2xl border border-slate-100">
-                <table className="w-full text-sm">
-                  <tbody>
-                    {detailRows.map((row) => (
-                      <tr key={row.label} className="border-b border-slate-100 last:border-0">
-                        <td className="w-1/3 bg-slate-50 px-4 py-3 font-semibold text-slate-600">{row.label}</td>
-                        <td className="px-4 py-3 text-slate-800">{row.value}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+
+            <div className="space-y-4">
+              <div>
+                <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">{product.title}</h1>
+                <p className="mt-2 text-lg font-semibold text-sky-600">${product.price.toFixed(2)}</p>
+              </div>
+
+              <div className="space-y-2">
+                {detailRows.map((row) => (
+                  <div key={row.label} className="flex justify-between border-b border-slate-100 py-2">
+                    <span className="font-medium text-slate-600">{row.label}</span>
+                    <span className="text-slate-800">{row.value}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4">
+                <p className="text-slate-700">{product.description}</p>
               </div>
             </div>
           </div>

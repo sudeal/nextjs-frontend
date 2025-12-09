@@ -74,7 +74,7 @@ const pricingItems = [
 
 const simpleNavItems: Array<{ labelKey: string; href?: string; dispatchKey?: string }> = [
   { labelKey: "header.nav.track", dispatchKey: "track" },
-  { labelKey: "header.nav.about", dispatchKey: "about" },
+  { labelKey: "header.nav.contact", href: "/contact" },
   { labelKey: "header.nav.declaration", href: "/beyan" },
   { labelKey: "header.nav.product", href: "/product" },
   { labelKey: "header.nav.product2", href: "/product2" },
@@ -283,7 +283,6 @@ export function Header({ locale, dictionary }: HeaderProps) {
                   className="flex items-center gap-1 rounded-full px-4 py-1.5 text-base text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
                 >
                   {t(item.labelKey)}
-                  <ArrowIcon />
                 </button>
               );
             })}

@@ -34,7 +34,7 @@ body {
 }
 
 .ant-form-item {
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
 }
 
 .ant-form-item-label {

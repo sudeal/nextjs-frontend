@@ -83,10 +83,13 @@ export default function Product2DetailPage() {
     );
   }
 
+  const priceWithVAT = product.price * 1.18; 
+
   const detailRows = [
     { label: "ID", value: product.id.toString() },
     { label: locale === "tr" ? "Kategori" : "Category", value: product.category },
     { label: locale === "tr" ? "Fiyat" : "Price", value: `$${product.price.toFixed(2)}` },
+    { label: locale === "tr" ? "KDV'li Fiyat" : "Price with VAT", value: `$${priceWithVAT.toFixed(2)}` },
     { label: locale === "tr" ? "Puan" : "Rating", value: `${product.rating.rate.toFixed(1)} (${product.rating.count})` },
   ];
 

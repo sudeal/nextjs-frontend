@@ -80,6 +80,16 @@ export default function Product2Page() {
         ),
       },
       {
+        title: locale === "tr" ? "KDV'li Fiyat" : "Price with VAT",
+        dataIndex: "priceWithVAT",
+        key: "priceWithVAT",
+        width: 160,
+        align: "left",
+        render: (value) => (
+          <span className="font-semibold text-slate-800">${Number(value).toFixed(2)}</span>
+        ),
+      },
+      {
         title: locale === "tr" ? "Puan" : "Score",
         dataIndex: ["rating", "rate"],
         key: "rating",
@@ -120,6 +130,7 @@ export default function Product2Page() {
       products.map((product) => ({
         ...product,
         key: product.id,
+        priceWithVAT: product.price * 1.18,
       })),
     [products],
   );
